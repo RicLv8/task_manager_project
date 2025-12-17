@@ -18,3 +18,14 @@ class TaskManager:
         if 0 <= index < len(self.tasks):
             self.tasks[index]['completed'] = True
             save_tasks(self.tasks)
+        else:
+            raise IndexError("Task index out of range.")
+
+    def delete_task(self, index):
+        """Removes a task from the list and updates storage."""
+        if 0 <= index < len(self.tasks):
+            # Using 'pop' or 'del' removes the item from the list
+            self.tasks.pop(index)
+            save_tasks(self.tasks)
+        else:
+            raise IndexError("Task index out of range.")
